@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+
+    <h1>All Entries</h1>
+   
+    <% entries.forEach(entry => { %>
+        <div>
+            <h2><%= entry.title %></h2>
+            <p><%= entry.entryBody %></p>
+            <p>Public: <%= entry.isPublic %></p>
+        </div>
+        <form delete method="POST" action="/entries/<%= entry._id %>?_method=DELETE">
+            <button type="submit">Delete</button>
+        </form>
+        <form edit method="get" action="/entries/<%= entry._id %>/edit">
+            <button type="submit">Edit</button>
+        </form> 
+    <% }) %>
+    <% if (entries.length === 0) { %>
+        <p>No entries found.</p>
+     
+    
+    <% } %>
+   
+  
+   
+</body>
+</html>

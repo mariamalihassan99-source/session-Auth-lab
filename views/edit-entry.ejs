@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+
+    <h1>Edit Entry</h1>
+    <form method="post" action="/entries/<%= entry._id %>?_method=PUT">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= entry.title %>">
+        <br>
+        <label for="entryBody">Entry Body:</label>
+        <textarea id="entryBody" name="entryBody"><%= entry.entryBody %></textarea>
+        <br>
+        <label for="isPublic">Public:</label>
+        <input type="checkbox" id="isPublic" name="isPublic" <%= entry.isPublic ? 'checked' : '' %>>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
